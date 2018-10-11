@@ -21,7 +21,7 @@ var server=http.createServer(function(request,response){
            response.write("This request URL"+pathname+"was not found on this server");
            response.end();
         }else{
-            fs.readFile(realPath,'binary',function(err,file){
+            fs.readFile(realPath,{encoding:'utf-8'},function(err,file){//需配置编码
                 if(err){
                     response.writeHead(404,{
                         'Content-Type':"text/plain"
